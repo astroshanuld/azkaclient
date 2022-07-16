@@ -11,60 +11,70 @@ const CardDiskonItem = ({
   price,
   disc,
   unit,
-}: CardDiskonItemProps) => (
-  <View
-    style={{
-      width: 110,
-      height: 190,
-      padding: 7,
-      borderWidth: 2,
-      borderRadius: 15,
-      borderColor: '#a5a5a5',
-      marginRight: 20,
-      marginVertical: 10,
-    }}
-  >
+}: CardDiskonItemProps) => {
+  const discVal = disc / 100
+  const priceDisc = price - price * discVal
+
+  return (
     <View
       style={{
-        width: 80,
-        height: 80,
-        alignSelf: 'center',
-        borderWidth: 0.5,
-        borderRadius: 5,
-
-        borderColor: '#000',
-        alignItems: 'center',
-        justifyContent: 'center',
+        width: 110,
+        height: 190,
+        padding: 7,
+        borderWidth: 2,
+        borderRadius: 15,
+        borderColor: '#a5a5a5',
+        marginRight: 20,
+        marginVertical: 10,
       }}
     >
-      <Image
-        source={{
-          uri: image,
+      <View
+        style={{
+          width: 80,
+          height: 80,
+          alignSelf: 'center',
+          borderWidth: 0.5,
+          borderRadius: 5,
+          borderColor: '#000',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
-        style={{ width: 75, height: 75 }}
+      >
+        <Image
+          source={{
+            uri: image,
+          }}
+          style={{ width: 75, height: 75 }}
+        />
+      </View>
+      <View style={{ marginVertical: 5 }} />
+      <View style={{ width: '100%', height: 43 }}>
+        <TextRegular color="#000" size={12} value={name} />
+      </View>
+      <NumberFormat
+        value={price}
+        decimalSeparator=","
+        thousandSeparator="."
+        displayType="text"
+        renderText={(value) => (
+          <TextBold
+            color="#a5a5a5"
+            size={8}
+            value={`Rp ${value} (-${disc}%)`}
+          />
+        )}
+      />
+      <NumberFormat
+        value={priceDisc}
+        decimalSeparator=","
+        thousandSeparator="."
+        displayType="text"
+        renderText={(value) => (
+          <TextBold color="#000" size={10} value={`Rp ${value} / ${unit}`} />
+        )}
       />
     </View>
-    <View style={{ marginVertical: 5 }} />
-    <TextRegular color="#000" size={12} value={name} />
-    <NumberFormat
-      value={price}
-      decimalSeparator=","
-      thousandSeparator="."
-      displayType="text"
-      renderText={(value) => (
-        <TextBold color="#a5a5a5" size={8} value={`Rp ${value}`} />
-      )}
-    />
-    <NumberFormat
-      value={disc}
-      decimalSeparator=","
-      thousandSeparator="."
-      displayType="text"
-      renderText={(value) => (
-        <TextBold color="#000" size={10} value={`Rp ${value} / ${unit}`} />
-      )}
-    />
-  </View>
-)
+  )
+}
 
 export default CardDiskonItem
