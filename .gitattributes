@@ -1,0 +1,7 @@
+# Windows files should use crlf line endings
+# https://help.github.com/articles/dealing-with-line-endings/
+
+*.tsx text eol=lf
+*.ts text eol=lf
+*.jsx text eol=lf
+*.js text eol=lf

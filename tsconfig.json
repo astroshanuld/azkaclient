@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "typeRoots": ["src/@base/types"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "downlevelIteration": true,
+    "paths": {
+      "@base": ["./src/@base/*"],
+      "assets": ["./src/assets/*"],
+      "components": ["src/@base/components/*"],
+      "config": ["./src/config/*"],
+      "data": ["./src/data/*"],
+      "helpers": ["./src/helpers/*"],
+      "interfaces": ["./src/interfaces/*"],
+      "constants": ["./src/constants/*"],
+      "layouts": ["./src/layouts/*"],
+      "routes": ["./src/routes/*"],
+      "screens": ["./src/screens/*"],
+      "services": ["./src/services/*"],
+      "utils": ["./src/utils/*"],
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "node_modules/@types/jest/index.d.ts",
+    "./jest/jest-setup.ts"
+, "src/constants/constant.ts"  ]
+}

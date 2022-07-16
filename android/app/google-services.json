@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "676392426364",
+    "firebase_url": "https://rezekiabadi-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "rezekiabadi",
+    "storage_bucket": "rezekiabadi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676392426364:android:141ad7e2cf791a1565e2f9",
+        "android_client_info": {
+          "package_name": "com.azkaclient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676392426364-stajjts8j05kq3iet8s7dl4jrivnk2pn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.azkaclient",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "676392426364-18lvske3ug3ruhknf78d6c379jkssf14.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqU4Kf7WavOkyGbiMIGTGPEoudNdZhwfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676392426364-18lvske3ug3ruhknf78d6c379jkssf14.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
