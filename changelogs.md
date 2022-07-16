@@ -8,3 +8,6 @@
 
 ## 17/07/2022 - feat: loginscreen
 1. Initiated **LoginScreen**.
+
+## 17/07/2022 - feat: homescreen backhandler
+1. Added backhandler for **HomeScreen** to exit app.
