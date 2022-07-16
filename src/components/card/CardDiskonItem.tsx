@@ -1,9 +1,9 @@
 import { Image, View } from 'react-native'
 import React from 'react'
-import { CardDiskonItemProps } from 'constants/Component'
-import TextRegular from 'assets/fonts/TextRegular'
+import TextRegular from 'components/fonts/TextRegular'
 import NumberFormat from 'react-number-format'
-import TextBold from 'assets/fonts/TextBold'
+import TextBold from 'components/fonts/TextBold'
+import { CardDiskonItemProps } from 'interfaces/Components'
 
 const CardDiskonItem = ({
   name,

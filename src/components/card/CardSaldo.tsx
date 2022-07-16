@@ -1,8 +1,8 @@
 import { TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import TextRegular from 'assets/fonts/TextRegular'
+import TextRegular from 'components/fonts/TextRegular'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import TextBold from 'assets/fonts/TextBold'
+import TextBold from 'components/fonts/TextBold'
 
 const CardSaldo = () => (
   <View

@@ -1,7 +1,7 @@
 import { View } from 'react-native'
 import React from 'react'
-import TextBold from 'assets/fonts/TextBold'
-import TextRegular from 'assets/fonts/TextRegular'
+import TextBold from 'components/fonts/TextBold'
+import TextRegular from 'components/fonts/TextRegular'
 import { devWidth } from 'constants/Dimension'
 
 const HeaderMain = () => (

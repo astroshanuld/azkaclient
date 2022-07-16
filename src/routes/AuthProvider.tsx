@@ -1,25 +1,37 @@
-import React, { createContext, Dispatch, useState } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { createContext, Dispatch, useEffect, useState } from 'react'
+import auth from '@react-native-firebase/auth'
 
 interface IAuthContext {
-  isAuthPassed: boolean
-  setIsAuthPassed: Dispatch<React.SetStateAction<boolean>>
-  uid: string
-  setUid: Dispatch<React.SetStateAction<string>>
+  initializing: boolean
+  setInitializing: Dispatch<React.SetStateAction<boolean>>
+  user: any
+  setUser: Dispatch<any>
 }
 
 export const AuthContext = createContext<Partial<IAuthContext>>({})
 
 const AuthProvider = ({ children }) => {
-  const [isAuthPassed, setIsAuthPassed] = useState<boolean>(false)
-  const [uid, setUid] = useState<string>('')
+  const [initializing, setInitializing] = useState(true)
+  const [user, setUser] = useState()
+
+  const onAuthStateChanged = (user) => {
+    setUser(user)
+    if (initializing) setInitializing(false)
+  }
+
+  useEffect(() => {
+    auth().onAuthStateChanged(onAuthStateChanged)
+  }, [])
 
   return (
     <AuthContext.Provider
       value={{
-        isAuthPassed,
-        setIsAuthPassed,
-        uid,
-        setUid,
+        initializing,
+        setInitializing,
+        user,
+        setUser,
       }}
     >
       {children}

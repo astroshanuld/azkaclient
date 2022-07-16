@@ -1,6 +1,6 @@
 import { View, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import TextBold from 'assets/fonts/TextBold'
+import TextBold from 'components/fonts/TextBold'
 import CardDiskonItem from 'components/card/CardDiskonItem'
 import firestore, {
   FirebaseFirestoreTypes,
