@@ -98,7 +98,7 @@ const HomeProfile = () => {
       <ItemProfile
         icon="logout-variant"
         onPress={() => console.log('MEONG')}
-        title="Plafond"
+        title="Plafon"
       />
       <View style={{ marginVertical: 8 }} />
       <TextBold color="#000" size={18} value="Pengaturan Akun" />

@@ -14,3 +14,6 @@
 
 ## 17/07/2022 - feat: homeprofile
 1. Initiated **HomeProfile**.
+
+## 17/07/2022 - refactor: headermain name
+1. Changed name of the user on **HeaderMain**.

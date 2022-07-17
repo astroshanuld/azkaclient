@@ -32,7 +32,7 @@ const LoginForm = () => {
           .collection('User')
           .doc(response?.user?.uid)
           .set({
-            name: `Juragan ${Math.floor(Math.random() * 1000)}`,
+            name: `Juragan #${Math.floor(Math.random() * 1000)}`,
             email: response?.user?.email,
             verified: response?.user?.emailVerified,
             plafond: 0,
