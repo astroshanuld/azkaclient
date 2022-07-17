@@ -3,8 +3,15 @@ import React from 'react'
 import { devWidth } from 'constants/Dimension'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import TextBold from 'components/fonts/TextBold'
+import { FooterMainProps } from 'interfaces/Components'
 
-const FooterMain = () => (
+const FooterMain = ({
+  active,
+  onPressAccount,
+  onPressCart,
+  onPressHistory,
+  onPressHome,
+}: FooterMainProps) => (
   <View
     style={{
       width: devWidth,
@@ -22,30 +29,46 @@ const FooterMain = () => (
   >
     <TouchableOpacity
       style={{ width: '25%', alignItems: 'center', justifyContent: 'center' }}
-      onPress={() => console.log('MEONG')}
+      onPress={onPressHome}
     >
-      <Icon name="home" size={25} color="#0f17fa" />
+      <Icon
+        name="home-modern"
+        size={25}
+        color={active === 'Home' ? 'green' : '#0f17fa'}
+      />
       <TextBold color="#000" size={10} value="Beranda" />
     </TouchableOpacity>
     <TouchableOpacity
       style={{ width: '25%', alignItems: 'center', justifyContent: 'center' }}
-      onPress={() => console.log('MEONG')}
+      onPress={onPressHistory}
     >
-      <Icon name="file-document" size={25} color="#0f17fa" />
+      <Icon
+        name="file-document"
+        size={25}
+        color={active === 'History' ? 'green' : '#0f17fa'}
+      />
       <TextBold color="#000" size={10} value="Riwayat" />
     </TouchableOpacity>
     <TouchableOpacity
       style={{ width: '25%', alignItems: 'center', justifyContent: 'center' }}
-      onPress={() => console.log('MEONG')}
+      onPress={onPressCart}
     >
-      <Icon name="cart" size={25} color="#0f17fa" />
+      <Icon
+        name="cart"
+        size={25}
+        color={active === 'Cart' ? 'green' : '#0f17fa'}
+      />
       <TextBold color="#000" size={10} value="Keranjang" />
     </TouchableOpacity>
     <TouchableOpacity
       style={{ width: '25%', alignItems: 'center', justifyContent: 'center' }}
-      onPress={() => console.log('MEONG')}
+      onPress={onPressAccount}
     >
-      <Icon name="account" size={25} color="#0f17fa" />
+      <Icon
+        name="account"
+        size={25}
+        color={active === 'Account' ? 'green' : '#0f17fa'}
+      />
       <TextBold color="#000" size={10} value="Akun" />
     </TouchableOpacity>
   </View>

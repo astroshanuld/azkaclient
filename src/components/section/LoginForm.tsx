@@ -7,16 +7,14 @@ import TextRegular from 'components/fonts/TextRegular'
 import TextLoginSignUp from 'components/fonts/TextLoginSignUp'
 import ButtonPrimary90 from 'components/button/ButtonPrimary90'
 import auth from '@react-native-firebase/auth'
-import AlertSuccess from 'components/alert/AlertSuccess'
-import { LoginFormProps } from 'interfaces/Components'
+import firestore from '@react-native-firebase/firestore'
 import AlertDanger from 'components/alert/AlertDanger'
 
-const LoginForm = ({ navigation }: LoginFormProps) => {
+const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isSignup, setIsSignup] = useState(false)
   const [isAlertMessage, setIsAlertMessage] = useState('')
-  const [isAlertSuccess, setIsAlertSuccess] = useState(false)
   const [isAlertDanger, setIsAlertDanger] = useState(false)
 
   const onSwitchSignup = () => {
@@ -25,21 +23,22 @@ const LoginForm = ({ navigation }: LoginFormProps) => {
     setIsSignup(!isSignup)
   }
 
-  const onSuccess = () => {
-    setIsAlertSuccess(false)
-    navigation.navigate('HomeScreen')
-  }
-
   const postSignup = () => {
     auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        setIsAlertSuccess(true)
-        if (isSignup) {
-          setIsAlertMessage(
-            'Selamat datang di Rezeki Abadi. Selamat berbelanja!'
-          )
-        } else setIsAlertMessage('Berhasil masuk ke aplikasi.')
+      .then((response) => {
+        response?.user.sendEmailVerification()
+        firestore()
+          .collection('User')
+          .doc(response?.user?.uid)
+          .set({
+            name: `Juragan ${Math.floor(Math.random() * 1000)}`,
+            email: response?.user?.email,
+            verified: response?.user?.emailVerified,
+            plafond: 0,
+            point: 0,
+          })
+          .catch((error) => console.error(error))
       })
       .catch((error) => {
         setIsAlertDanger(true)
@@ -53,22 +52,20 @@ const LoginForm = ({ navigation }: LoginFormProps) => {
             'Alamat email tidak benar. Periksa kembali alamat email Anda.'
           )
         }
+        if (error.code === 'auth/network-request-failed') {
+          setIsAlertMessage('Koneksi internet terputus!')
+        }
       })
   }
 
   const postLogin = () => {
     auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        setIsAlertSuccess(true)
-        if (isSignup) {
-          setIsAlertMessage(
-            'Selamat datang di Rezeki Abadi. Selamat berbelanja!'
-          )
-        } else setIsAlertMessage('Berhasil masuk ke aplikasi.')
-      })
       .catch((error) => {
         setIsAlertDanger(true)
+        if (error.code === 'auth/wrong-password') {
+          setIsAlertMessage('Username atau password salah!')
+        }
         if (error.code === 'auth/invalid-email') {
           setIsAlertMessage(
             'Alamat email tidak benar. Periksa kembali alamat email Anda.'
@@ -116,12 +113,6 @@ const LoginForm = ({ navigation }: LoginFormProps) => {
         colorLink="blue"
         isSignup={isSignup}
         onPress={() => onSwitchSignup()}
-      />
-      <AlertSuccess
-        message={isAlertMessage}
-        onPressNext={() => onSuccess()}
-        setVisible={() => onSuccess()}
-        visible={isAlertSuccess}
       />
       <AlertDanger
         message={isAlertMessage}

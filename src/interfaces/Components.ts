@@ -15,6 +15,14 @@ export interface CardDiskonItemProps {
   unit: string
 }
 
+export interface FooterMainProps {
+  active: string
+  onPressHome: () => void
+  onPressHistory: () => void
+  onPressCart: () => void
+  onPressAccount: () => void
+}
+
 export interface InputFullProps {
   keyboardType?: KeyboardTypeOptions
   secureText?: boolean
@@ -23,6 +31,15 @@ export interface InputFullProps {
   setValue: (x: string) => void
   title?: string
   value: string
+}
+
+export interface ItemProfileProps {
+  isSubtitle?: boolean
+  icon: string
+  onPress: () => void
+  subtitle?: string
+  subtitleColor?: string
+  title: string
 }
 
 export interface LoginFormProps {

@@ -31,9 +31,7 @@ const LoginScreen = ({ navigation }) => {
         }}
       >
         <TextBold color="#000" size={30} value="Rezeki Abadi" />
-        {!initializing && _.isNil(user) ? (
-          <LoginForm navigation={navigation} />
-        ) : null}
+        {!initializing && _.isNil(user) ? <LoginForm /> : null}
       </View>
       <LoginFooter />
     </SafeAreaView>

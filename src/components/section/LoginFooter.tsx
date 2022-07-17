@@ -24,7 +24,11 @@ const LoginFooter = () => {
         value={initializing ? 'Memeriksa sesi masuk Anda...' : ''}
       />
       <View style={{ marginVertical: 3 }} />
-      <TextRegular color="#000" size={12} value="&copy;2022 CV. Rezeki Abadi" />
+      <TextRegular
+        color="#000"
+        size={12}
+        value="&copy;2022 HazTech. All rights reserved."
+      />
     </View>
   )
 }
